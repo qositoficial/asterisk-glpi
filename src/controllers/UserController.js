@@ -2,7 +2,9 @@ import axios from "axios";
 import dotenv from "dotenv";
 import { User } from "../models/UserModel.js";
 
-dotenv.config();
+import { envPath } from "../utils/dotenv.js";
+
+dotenv.config({ path: envPath });
 
 const { GLPI_API_URL, GLPI_API_TIMEOUT, GLPI_APP_TOKEN } = process.env;
 

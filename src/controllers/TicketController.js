@@ -3,7 +3,9 @@ import dotenv from "dotenv";
 
 import { login, logoff } from "./SessionController.js";
 
-dotenv.config();
+import { envPath } from "../utils/dotenv.js";
+
+dotenv.config({ path: envPath });
 
 const {
     GLPI_API_URL,

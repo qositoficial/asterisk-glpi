@@ -9,7 +9,9 @@ import { searchUser } from "./UserController.js";
 import { login, logoff } from "./SessionController.js";
 import { searchEntity } from "./EntityController.js";
 
-dotenv.config();
+import { envPath } from "../utils/dotenv.js";
+
+dotenv.config({ path: envPath });
 
 const {
     GLPI_DEFAULT_USERID,
