@@ -16,7 +16,11 @@ const {
     QPHONE_URL_RECORD,
 } = process.env;
 
-export async function createTicket(glpiFullUser, asteriskUniqueID) {
+export async function createTicket(
+    glpiFullUser,
+    phoneNumber,
+    asteriskUniqueID
+) {
     try {
         const glpiSessionToken = await login();
 
@@ -25,8 +29,8 @@ export async function createTicket(glpiFullUser, asteriskUniqueID) {
             {
                 input: {
                     name: GLPI_DEFAULT_TICKET_SUBJECT,
-                    content: `<p>Ticket: ${GLPI_DEFAULT_TICKET_SUBJECT}</p>
-                      <p>Gravação da chamada:</p>
+                    content: `<p>Chamada recebida de: ${glpiFullUser.firstName} ${glpiFullUser.lastName} <${phoneNumber}></p>
+                      <p>Gravação da chamada: </p>
                       <p><audio src='${QPHONE_URL_RECORD}${asteriskUniqueID}' controls buffered>
                       To listen to the audio, it must be present on the Q-Phone server.</audio></p>`,
                     _users_id_requester: glpiFullUser.id,
