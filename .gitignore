@@ -1,3 +1,8 @@
+# Diego's files
+*.html
+*.src
+*.sql
+
 # Logs
 logs
 *.log

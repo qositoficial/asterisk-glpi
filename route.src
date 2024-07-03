@@ -1,0 +1,19 @@
+{
+    :local count [/ip route print count-only where comment="ISP2 - DHCP - Check"]
+    :if ($bound=1) do={
+        :if ($count = 0) do={
+            /ip route add dst-address=208.67.220.220 gateway=$"gateway-address" comment="ISP2 - DHCP - Check" scope=5 target-scope=20
+        } else={
+            :if ($count = 1) do={
+                :local test [/ip route find where comment="ISP2 - DHCP - Check"]
+                :if ([/ip route get $test gateway] != $"gateway-address") do={
+                    /ip route set $test gateway=$"gateway-address"
+                }
+            } else={
+                :error "Multiple routes found"
+            }
+        }
+    } else={
+        /ip route remove [find comment="ISP2 - DHCP - Check"]
+    }
+}
