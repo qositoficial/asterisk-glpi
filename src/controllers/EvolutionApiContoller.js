@@ -23,11 +23,8 @@ export async function sendText(text, asteriskUniqueID) {
                 options: {
                     delay: 1200,
                     presence: "composing",
-                    linkPreview: true,
                 },
-                textMessage: {
-                    text: `${text} \n\n${QPHONE_URL_RECORD}${asteriskUniqueID}`,
-                },
+                text: `${text} \n\n${QPHONE_URL_RECORD}${asteriskUniqueID}`,
             },
             {
                 timeout: EVOLUTION_API_TIMEOUT,

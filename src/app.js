@@ -37,7 +37,7 @@ if (args[0] == "calleridName") {
         process.exit(1);
     }
 
-    const text = `*[Q-Phone]* \n☎️ Chamada entrando na fila: ${args[1]} \n\nOrigem: ${args[2]} \nData: ${args[3]} \nHorário: ${args[4]}`;
+    const text = `*[Q-Phone [QoS]]* \n☎️ Chamada entrando na fila: ${args[1]} \n\nOrigem: ${args[2]} \nData: ${args[3]} \nHorário: ${args[4]}`;
 
     console.log(await sendText(text, args[5]));
 } else {
